@@ -40,7 +40,6 @@ navLinks.forEach(function (link) {
         event.preventDefault();
 
         const targetId = link.getAttribute("href");
-
         const targetSection = document.querySelector(targetId);
 
         if (targetSection) {
@@ -68,7 +67,6 @@ function updateActiveNavigation() {
     sections.forEach(function (section) {
 
         const sectionTop = section.offsetTop;
-
         const scrollPosition = contentArea.scrollTop;
 
         if (scrollPosition >= sectionTop - 250) {
@@ -104,27 +102,36 @@ contentArea.addEventListener(
 
 
 // Run once when page loads
-
 updateActiveNavigation();
 
+
+// =========================
 // CUSTOM CURSOR
+// =========================
+
 const customCursor = document.querySelector(".custom-cursor");
 const cursorDot = document.querySelector(".cursor-dot");
 
 let mouseX = 0;
 let mouseY = 0;
+
 let cursorX = 0;
 let cursorY = 0;
 
+
 document.addEventListener("mousemove", function (event) {
+
     mouseX = event.clientX;
     mouseY = event.clientY;
 
     cursorDot.style.left = mouseX + "px";
     cursorDot.style.top = mouseY + "px";
+
 });
 
+
 function animateCursor() {
+
     cursorX += (mouseX - cursorX) * 0.15;
     cursorY += (mouseY - cursorY) * 0.15;
 
@@ -132,23 +139,70 @@ function animateCursor() {
     customCursor.style.top = cursorY + "px";
 
     requestAnimationFrame(animateCursor);
+
 }
 
 animateCursor();
 
+
+// =========================
 // CURSOR HOVER EFFECT
+// =========================
+
 const hoverElements = document.querySelectorAll(
     "a, button, .sidebar-nav-link, .project-card, .skill-item"
 );
 
+
 hoverElements.forEach(function (element) {
+
     element.addEventListener("mouseenter", function () {
+
         customCursor.classList.add("cursor-hover");
         cursorDot.classList.add("cursor-hover");
+
     });
 
+
     element.addEventListener("mouseleave", function () {
+
         customCursor.classList.remove("cursor-hover");
         cursorDot.classList.remove("cursor-hover");
+
     });
+
 });
+
+
+// =========================
+// SOFT CURSOR LIGHT
+// =========================
+
+const cursorLight = document.querySelector(".cursor-light");
+
+let lightX = 0;
+let lightY = 0;
+
+
+document.addEventListener("mousemove", function (event) {
+
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+
+});
+
+
+function animateCursorLight() {
+
+    lightX += (mouseX - lightX) * 0.08;
+    lightY += (mouseY - lightY) * 0.08;
+
+    cursorLight.style.left = lightX + "px";
+    cursorLight.style.top = lightY + "px";
+
+    requestAnimationFrame(animateCursorLight);
+
+}
+
+
+animateCursorLight();
