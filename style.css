@@ -6689,6 +6689,14 @@ body.dark-mode .status-dot {
         gap 0.3s ease;
 }
 
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    margin-top: 24px;
+}
+
 .project-link span {
     font-size: 15px;
     line-height: 1;
@@ -10225,5 +10233,7 @@ body.dark-mode #achievements .achievement-item::before {
     }
 
 }
+
+
     
     
